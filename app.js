@@ -1,125 +1,173 @@
- window.location.href="newpage.html";
-var button = document.getElementById("click");
-button.addEventListener('click',newfunction);
+//window.location.href = "fishingpointscreen.html" ;
+var fishingPointArray = ["English","తెలుగు", "தமிழ்"];
+  
+ var text = "";
 
-function newfunction(){
-    alert("hooray it worked");
+ for (var i = 0; i < fishingPointArray.length; i++) {
+   text = "<ul id = "+i+">";
+   text += "<li>" + fishingPointArray[i]+ "</li>";
+   text += "</ul>";
+   document.getElementById("aaron-family").innerHTML += text;
+ }
+
+var firstItem = document.getElementById(0);
+var secondItem = document.getElementById(1);
+var islogin =  localStorage.getItem('islogin');
+console.log(islogin);
+console.log(`${localStorage.getItem('landingsiteindex')} ${ localStorage.getItem('landingsite' )} ${localStorage.getItem('landingsitestate')}`)
+if(islogin === '1'){
+  console.log("else");
+      var queryString =
+      "?para1=" +
+      localStorage.getItem('landingsiteindex')+
+      "&fishingSiteName=&" +
+      localStorage.getItem('landingsite' )+"&"+localStorage.getItem('landingsitestate')+"&"+localStorage.getItem('landingsitelanguage');
+    console.log("Number : " + queryString);
+      console.log(`${localStorage.getItem('landingsiteindex')} ${ localStorage.getItem('landingsite' )} ${localStorage.getItem('landingsitestate')}`)
+   window.location.href = "thirdpage.html" + queryString;
 }
 
+
+
+var thirdItem = document.getElementById(2);
+var previousItem = null;
+var currentItem = null;
+var nextItem = null;
+var selectedelementindex = 0;
+
+
 const softkeyCallback = {
-    left: function() 
-    {   window.location.href="index.html";
-        var x = document.getElementById("myText").value;
-        document.getElementById("myText").value = x+" left"
-        document.body.appendChild(x); 
-    },
-    center: function() 
-    {   var num = 0;
-        //alert("you have been signed in");
-        var x = document.getElementById("myText").value;
-        var request = new XMLHttpRequest();
-        request.open('POST',  'http://knowledgegrapg.jio.ril.com/api/guru/user/get/profile', true);        
-        request.setRequestHeader("Content-type", "application/json");
-        var parameters = {
-            
-            "phone": x
-          }
-        request.send(JSON.stringify(parameters));
-        
-        
-          request.onload = function(){
-            var json_data = JSON.parse(this.response);
-            num = json_data.users.length;
-            console.log(num);
-              
-            
-            
-            if(num === 2){
-            window.location.href="newpage.html";}
-            else{
-                alert("please enter a valid mobile number");
-            }
-          }
 
-    },
-    right: function() 
-    {    var x = document.getElementById("myText").value;
-    /*
+  center: function(button) {
+    var queryString =
+      "?para1=" +
+      button +
+      "&fishingSiteName=" +
+      fishingPointArray[button];
+      localStorage.setItem('lan', button); 
+     localStorage.setItem('language', fishingPointArray[button]);
+    window.location.href = "chooselanguage.html" + queryString;
+  }
+};
+
+
+//gives the current element when you tap arrow up
+function getCurrentItem() {
+  var flag = firstItem.style.backgroundColor;
+
+  var flag1 = secondItem.style.backgroundColor;
+
+  var flag2 = thirdItem.style.backgroundColor;
+  console.log(flag);
+  if (flag === "rgb(3, 144, 115)") {
+    console.log("i am here");
+    previousItem = secondItem;
+    
+    currentItem = firstItem;
+  } else if (flag1 === "rgb(3, 144, 115)") {
+    previousItem = thirdItem;
+    
+    currentItem = secondItem;
+  } else if (flag2 === "rgb(3, 144, 115)") {
+    previousItem = firstItem;
+    
+    currentItem = thirdItem;
+  } else {
+    previousItem = firstItem;
+    currentItem =  secondItem;
+  }
+  return currentItem;
+}
+//gives the current element when you tap arrow down
+function getCurrentItemdown() {
+  var flag = firstItem.style.backgroundColor;
   
-        document.getElementById("myText").value = x+" right"
-        document.body.appendChild(x);*/
-        document.getElementById("myText").value = x.substring(0,x.length-1);
-    },
-    number: function(num) 
-    {
-        var x = document.getElementById("myText").value;
-        if(x === "mobile number"){
-            document.getElementById("myText").value= num;
-        }
-        else{
-            document.getElementById("myText").value = x+num;
-        }
-     }
-};
-function handleKeyDown(evt) {
-    switch (evt.key) {
-        case 'SoftLeft':
-            console.log("Hello World!");
-            // Action case press left key
-            softkeyCallback.left();
-        break;
+  var flag1 = secondItem.style.backgroundColor;
 
-        case 'SoftRight':
-            // Action case press right key
-            softkeyCallback.right();
-        break;
+  var flag2 = thirdItem.style.backgroundColor;
 
-        case 'Enter':
-            console.log("Hello World!");
-            // Action case press center key
-            softkeyCallback.center();
-        break;
-        case '1':
-            console.log("hello");
-            softkeyCallback.number("1");
-        break;    
-        case '2':
-            softkeyCallback.number("2");
-        break;
-        case '3':
-            softkeyCallback.number("3");
-        break;
-        case '4':
-            softkeyCallback.number("4");
-        break;
-        case '5':
-            softkeyCallback.number("5");
-        break;
-        case '6':
-            softkeyCallback.number("6");
-        break;
-        case '7':
-            softkeyCallback.number("7");
-        break;
-        case '8':
-            softkeyCallback.number("8");
-        break;
-        case '9':
-            softkeyCallback.number("9");
-        break;
-        case '0':
-            softkeyCallback.number("0");
-        break;                                                
-    }
-};
+  
+  console.log(currentItem);
+  if (flag === "rgb(3, 144, 115)") {
+    previousItem = thirdItem;
+    
+    currentItem = firstItem;
+  } else if (flag1 === "rgb(3, 144, 115)") {
+    previousItem = firstItem;
+    
+    currentItem =  secondItem;
+  } else if (flag2 === "rgb(3, 144, 115)") {
+    previousItem = secondItem;
+    
+    currentItem = thirdItem;
+  } else {
+    previousItem = firstItem;
+    currentItem = secondItem;
+  }
+  return currentItem;
+}
 
-document.addEventListener('keydown', handleKeyDown);
 
-/*if(x.length != 10)
-        {
-            alert("enter a valid mobile number");
-        }
-        else
-        {
-            window.location.href="newpage.html";
-        }       */
+function changeItemColor() {
+  currentItem = getCurrentItem();
+  currentItem.style.backgroundColor = "black";
+  
+  previousItem.style.backgroundColor = "rgb(3, 144, 115)";
+  
+}
+function changeItemColordown() {
+  currentItem = getCurrentItemdown();
+  currentItem.style.backgroundColor = "black";
+  
+  previousItem.style.backgroundColor = "rgb(3, 144, 115)";
+  
+}
+
+window.addEventListener("load", () => {
+  firstItem.style.backgroundColor = "rgb(3, 144, 115)";
+  currentItem = firstItem;
+});
+/**
+ * event handler for the keys pressed
+ */
+window.addEventListener("keydown", evt => {
+  console.log(evt);
+  switch (evt.key) {
+    case "ArrowDown":
+    console.log("i am here");
+      changeItemColor();
+      break;
+    case "ArrowUp":
+      changeItemColordown();
+      break;
+    case "SoftLeft":
+      // Action case press left key
+      softkeyCallback.left();      
+      break;
+    case "SoftRight":
+      // Action case press right key
+      softkeyCallback.right();
+      break;
+    case "Enter":
+      pressEnterButton();
+      break;
+    default:
+      console.log("you press soft key: " + evt.key);
+      break;
+    } 
+});
+
+document.addEventListener("keydown", handleKeyDown);
+
+
+function pressEnterButton() {
+  currentItem = getCurrentItem();
+  console.log("Index of app :" + currentItem.id);
+  if (currentItem.id !== "") {
+    softkeyCallback.center(currentItem.id);
+  }
+  else {
+    window.location = "../elements/test.html";
+  }
+}
+

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140996406-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-140996406-1');
+</script>
+
+
+  <title><strong>Fishing point zone</strong></title>
+</head>
+<style>
+  #loader {
+  position: absolute;
+  left: 62%;
+  top: 65%;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #039073;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+  
+  body {
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+    background: #000000;
+  }
+
+  h1 {
+    margin: 1rem;
+  }
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  overflow:visible;
+}
+
+ul{
+  
+  margin-top: -1px; /* Prevent double borders */
+  background-color:#000000;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color:#ffffff;
+  position: relative;
+  overflow:auto;
+}
+li {
+  font-size: 10px;
+}
+
+  .button {
+    font-size: 12px;
+    height: 80px;
+    width: 45%;
+    margin-left: 2%;
+    margin-top: 12px;
+    background-color: #ffffff;
+    border-radius: 8px;
+  }
+
+  .highlight {
+    border-color:white;
+  }
+
+  .white {
+    background: white;
+  }
+
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+  }
+
+  .lsk {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.35;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  width: 33%;
+  margin-left: 0%;
+}
+
+.csk {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.35;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  width: 33%;
+  margin-left: 33%;
+}
+
+.rsk {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.35;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  width: 33%;
+  margin-left:66%;
+}
+
+  .appLogo {
+    height: 42px;
+    width: 40px;
+    margin-top: 5%;
+    margin-left: 44%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .fishingPointTitle {
+    font-size: 13px;
+    font-weight: 500;
+    height: 20px;
+    width: 80%;
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: center;
+  color: #ffffff;
+
+  }
+
+  .imageTitle {
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 10px;
+    width: 45%;
+    height: 20px;
+    background: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+  }
+</style>
+ <div id="loader"></div>
+  <div style="display:none;" id="myDiv" class="animate-bottom">
+<div class="footer">
+  <div class="lsk">BACK</div>
+  <div class="csk">ENTER</div>
+  <div class="rsk"></div>
+
+</div>
+ 
+<script src="appindex.js" defer></script>
+
+<body>
+  <div class="fishingPointTitle" id = "title">Where do you fish?</div>
+ 
+<div style="margin-Top: 20px; overflow:auto">
+<ul id="aaron-family">
+</ul>
+</div>
+
+</body>
+</div>
+</html>
